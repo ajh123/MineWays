@@ -2,6 +2,8 @@
 
 Add transportation stuff, for trains, for roads and more to Minecraft!
 
+Curse Forge: https://www.curseforge.com/minecraft/mc-mods/ttransportcraft
+
 Currently adds
 
 Semaphore Signals = will stop trains when there are trains in the way
