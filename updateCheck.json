@@ -1,8 +1,5 @@
 {
   "homepage": "<homepage/download page for your mod>",
-  "<1.15.2>": {
-    "<1.15.2-1.0.0>": "<Initail version of this mod!>", 
-  },
   "promos": {
     "<1.15.2>-latest": "<1.15.2-1.0.0>",
     "<1.15.2>-recommended": "<1.15.2-1.0.0>",
