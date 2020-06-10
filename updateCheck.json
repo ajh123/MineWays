@@ -1,10 +1,11 @@
 {
   "homepage": "https://github.com/ajh123/TransportCraft/releases",
   "promos": {
-    "1.15.2-latest"     : "1.15.2-1.0.0",
+    "1.15.2-latest"     : "1.15.2-1.0.1",
     "1.15.2-recomended" : "1.15.2-1.0.0"
   },
   "1.15.2": {
+    "1.15.2-1.0.1" : "FIXED: join message"
     "1.15.2-1.0.0" : "Initail build of the mod"
   }
 }
