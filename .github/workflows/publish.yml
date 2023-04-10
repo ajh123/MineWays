@@ -1,0 +1,70 @@
+name: Publish on GitHub & CurseForge 
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+env:                                              
+  MINECRAFT_VERSION: 1.19.2                        
+  JAVA_VERSION: 17      
+  VERSION: 1.0.2+1.19.2
+  RELEASE_NAME: Mine Ways 1.0.2 for Minecraft 1.19.2
+  RELEASE_TYPE: alpha
+  CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.UPLOAD_GITHUB_TOKEN }}           
+
+permissions:
+  contents: write
+
+jobs:                                             
+  build:                                          
+    runs-on: ubuntu-latest                        
+    steps:                                        
+      - name: Check Environment Variables
+        run: env
+
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: "temurin"
+          java-version: 17
+
+      - name: Make Gradle Wrapper Executable
+        if: ${{ runner.os != 'Windows' }}
+        run: chmod +x ./gradlew
+
+      - name: Build
+        run: ./gradlew clean build
+        
+      - name: Publish (CurseForge/GitHub)
+        uses: Kir-Antipov/mc-publish@v3.2                                   
+        with:
+          curseforge-id: 388772
+          curseforge-token: "${{env.CURSEFORGE_TOKEN}}"
+          
+          github-tag: "v${{env.VERSION}}"
+          github-token: "${{env.GITHUB_TOKEN}}"
+          github-prerelease: true
+
+          files-primary: "*-@(fabric|forge|quilt)/build/libs/!(*-@(dev|sources|javadoc)).jar"
+          files-secondary: "*-@(fabric|forge|quilt)/build/libs/*-@(dev|sources|javadoc).jar"
+
+          name: "${{env.RELEASE_NAME}}"
+          version: "${{env.VERSION}}"
+          version-type: "${{env.RELEASE_TYPE}}"
+          changelog-file: CHANGELOG.md                                      
+
+          loaders: |
+            fabric
+            forge
+            quilt
+          
+          game-versions: "${{env.MINECRAFT_VERSION}}"
+          java: "${{env.JAVA_VERSION}}"

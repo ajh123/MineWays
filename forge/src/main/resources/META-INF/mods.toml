@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[43,)"
+issueTrackerURL = "https://github.com/ajh123/MineWays/issues"
+license = "GPL v3.0 or later"
+
+[[mods]]
+modId = "mineways"
+version = "${version}"
+displayName = "Mine Ways"
+authors = "ajh123"
+description = '''
+"Minecraft Mine Ways" is a mod that adds a variety of transportation options to the game, including roads, vehicles, and more. The mod is designed to make it easier for players to navigate their way around the game world and to connect different locations together. With Mine Ways, players can create a network of roads and paths, allowing them to quickly and easily travel between different areas of the game. Whether you're looking to explore new areas, transport goods and resources, or simply move around more efficiently, Mine Ways has something to offer.
+'''
+#logoFile = ""
+
+[[dependencies.mineways]]
+modId = "forge"
+mandatory = true
+versionRange = "[43,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.mineways]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19.2,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.mineways]]
+modId = "architectury"
+mandatory = true
+versionRange = "[6.2.43,)"
+ordering = "AFTER"
+side = "BOTH"
