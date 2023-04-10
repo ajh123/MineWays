@@ -7,6 +7,7 @@ env:
   JAVA_VERSION: 17      
   VERSION: 1.0.2+1.19.2
   RELEASE_NAME: Mine Ways 1.0.2 for Minecraft 1.19.2
+  RELEASE_TYPE: alpha
   CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.UPLOAD_GITHUB_TOKEN }}           
 
@@ -41,19 +42,19 @@ jobs:
       - name: Publish (CurseForge/GitHub)
         uses: Kir-Antipov/mc-publish@v3.2                                   
         with:
-          curseforge-id: 388772                                             
+          curseforge-id: 388772
           curseforge-token: "${{env.CURSEFORGE_TOKEN}}"
           
           github-tag: "v${{env.VERSION}}"
           github-token: "${{env.GITHUB_TOKEN}}"
           github-prerelease: true
 
-          files-primary: build*-@(fabric|forge|quilt)/libs/!(*-@(dev|sources|javadoc)).jar
-          files-secondary: build*-@(fabric|forge|quilt)/libs/*-@(dev|sources|javadoc).jar
+          files-primary: "*-@(fabric|forge|quilt)/build/libs/!(*-@(dev|sources|javadoc)).jar"
+          files-secondary: "*-@(fabric|forge|quilt)/build/libs/*-@(dev|sources|javadoc).jar"
 
-          name: "${{env.RELEASE_NAME}}"                             
+          name: "${{env.RELEASE_NAME}}"
           version: "${{env.VERSION}}"
-          version-type: alpha
+          version-type: "${{env.RELEASE_TYPE}}"
           changelog-file: CHANGELOG.md                                      
 
           loaders: |
