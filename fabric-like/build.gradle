@@ -1,3 +1,5 @@
+archivesBaseName = "mineways-fabric-like"
+
 architectury {
     common(rootProject.enabled_platforms.split(","))
 }

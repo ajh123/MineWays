@@ -1,3 +1,5 @@
+archivesBaseName = "mineways-common"
+
 architectury {
     common(rootProject.enabled_platforms.split(","))
 }

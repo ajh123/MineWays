@@ -8,6 +8,7 @@ architectury {
 }
 
 subprojects {
+    archives_base_name = "mineways-$project.name"
     apply plugin: "dev.architectury.loom"
 
     loom {
