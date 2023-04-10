@@ -14,3 +14,7 @@ Wiki: https://github.com/ajh123/MineWays/wiki
 
  
 This mod is currently in very early development, so expect bugs!
+
+## Contributing
+
+We would be very happy if you want to contribute to our project. Just make sure you use the latest "non-master" branch.
