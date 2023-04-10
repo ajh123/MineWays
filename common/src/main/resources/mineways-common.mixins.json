@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "tk.minersonline.mineways.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "tk.minersonline.mineways.mixin.MixinTitleScreen"
+  ],
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
