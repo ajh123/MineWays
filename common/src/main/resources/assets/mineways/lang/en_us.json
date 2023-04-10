@@ -1,3 +1,5 @@
 {
-  "item.mineways.example_item": "Example Item"
+  "itemGroup.mineways.mineays_main": "Mineways",
+  "item.mineways.road_creator": "Road Creator",
+  "item.mineways.road_node": "Road Node"
 }

@@ -3,13 +3,13 @@
   "id": "mineways",
   "version": "${version}",
   "name": "Mine Ways",
-  "description": "\"Minecraft Mine Ways\" is a mod that adds a variety of transportation options to the game, including roads, bridges, tunnels, and more. The mod is designed to make it easier for players to navigate their way around the game world and to connect different locations together. With Mine Ways, players can create a network of roads and paths, allowing them to quickly and easily travel between different areas of the game. Whether you're looking to explore new areas, transport goods and resources, or simply move around more efficiently, Mine Ways has something to offer.",
+  "description": "\"Minecraft Mine Ways\" is a mod that adds a variety of transportation options to the game, including roads, vehicles, and more. The mod is designed to make it easier for players to navigate their way around the game world and to connect different locations together. With Mine Ways, players can create a network of roads and paths, allowing them to quickly and easily travel between different areas of the game. Whether you're looking to explore new areas, transport goods and resources, or simply move around more efficiently, Mine Ways has something to offer.",
   "authors": [
     "ajh123"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://minersonline.tk",
+    "sources": "https://github.com/ajh123/MineWays"
   },
   "license": "Insert License Here",
   "icon": "assets/mineways/icon.png",
