@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[43,)"
-displayURL = "https://minersonline.tk/docs/docs/en/mineways"
+displayURL = "https://minersonline.tk/docs/en/mineways"
 issueTrackerURL = "https://github.com/ajh123/MineWays/issues"
 license = "GNU General Public License Version 3"
 
