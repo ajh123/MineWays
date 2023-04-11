@@ -1,8 +1,4 @@
----
-title: "Mine Ways"
-description: "Introduction to Mine Ways"
-tags: ["miners online", "mine ways", "minecraft"]
----
+## Mine Ways
 
 "Minecraft Mine Ways" is a mod that adds a variety of transportation options to the game, 
 including roads, vehicles, and more. The mod is designed to make it easier for 
