@@ -60,7 +60,7 @@ jobs:
           name: "${{env.RELEASE_NAME}}"
           version: "${{env.VERSION}}"
           version-type: "${{env.RELEASE_TYPE}}"
-          changelog-file: changelogs/1.0.3-CHANGELOG.md                                      
+          changelog-file: "changelogs/${{env.VERSION}}-CHANGELOG.md"                                      
 
           loaders:
             - fabric
