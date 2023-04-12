@@ -7,9 +7,9 @@
 
  public class ManualItem { //extends AbstractManualItem {
 
- 	public ManualItem() {
- 		//super(new Item.Settings().group(MineWaysMod.MAIN_TAB));
- 	}
+    public ManualItem() {
+        //super(new Item.Settings().group(MineWaysMod.MAIN_TAB));
+    }
 
 //	 @Override
 //	 protected ManualModel getManualModel() {
