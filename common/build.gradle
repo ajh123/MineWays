@@ -14,6 +14,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury:${rootProject.architectury_version}"
+    modImplementation  "curse.maven:markdownmanual-502485:${rootProject.markdown_manual_common_version}"
 }
 
 publishing {

@@ -39,6 +39,7 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionQuilt")) { transitive false }
     common(project(path: ":fabric-like", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":fabric-like", configuration: "transformProductionQuilt")) { transitive false }
+    modApi "curse.maven:markdownmanual-502485:${rootProject.markdown_manual_fabric_ish_version}"
 }
 
 processResources {

@@ -1,6 +1,6 @@
 plugins {
-    id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "0.12.0-SNAPSHOT" apply false
+    id "architectury-plugin" version "3.4.145"
+    id "dev.architectury.loom" version "1.1.329" apply false
 }
 
 architectury {
@@ -11,9 +11,9 @@ subprojects {
     archives_base_name = "mineways-$project.name"
     apply plugin: "dev.architectury.loom"
 
-    // loom {
-    //     silentMojangMappingsLicense()
-    // }
+     loom {
+         silentMojangMappingsLicense()
+     }
 
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
@@ -21,6 +21,12 @@ subprojects {
         // mappings loom.officialMojangMappings()
         // The following line declares the yarn mappings you may select this one as well.
         mappings "net.fabricmc:yarn:${rootProject.yarn_mappings}:v2"
+
+        // This doesn't seem to work ...
+        // mappings loom.layered { // We want to use both mappings, but the use the Mojang ones as a fallback.
+        //    // officialMojangMappings() // Layered mappings don't seem to work yet.
+        //     mappings("net.fabricmc:yarn:${rootProject.yarn_mappings}:v2")
+        //}
     }
 }
 
@@ -39,6 +45,10 @@ allprojects {
         // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
         // See https://docs.gradle.org/current/userguide/declaring_repositories.html
         // for more information about repositories.
+        maven {
+            url 'https://cursemaven.com'
+            content { includeGroup "curse.maven" }
+        }
     }
 
     tasks.withType(JavaCompile) {
