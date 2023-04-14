@@ -3,22 +3,17 @@ package tk.minersonline.mineways.setup;
 import java.util.function.Supplier;
 
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.SignType;
 import tk.minersonline.mineways.MineWaysMod;
-import tk.minersonline.mineways.block.DirectionalSignBlock;
-import tk.minersonline.mineways.item.DirectionalSignItem;
+import tk.minersonline.mineways.block.TrafficLightBlock;
 
 public class ModBlocks {
-    public static final RegistrySupplier<Block> OAK_DIRECTIONAL_SIGN = registerNoItem(
-            "oak_directional_sign", () -> new DirectionalSignBlock(SignType.OAK, Blocks.OAK_SIGN)
-    );
-    public static final RegistrySupplier<Item> OAK_DIRECTIONAL_SIGN_ITEM = Registration.ITEMS.register(
-            "oak_directional_sign", () -> new DirectionalSignItem(ModBlocks.OAK_DIRECTIONAL_SIGN.get())
+    public static final RegistrySupplier<Block> TRAFFIC_LIGHT = register(
+            "traffic_light", () -> new TrafficLightBlock(AbstractBlock.Settings.of(Material.METAL))
     );
 
     public static <T extends Block> RegistrySupplier<T> registerNoItem(String id, Supplier<? extends T> supplier) {

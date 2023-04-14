@@ -1,10 +1,7 @@
 package tk.minersonline.mineways.setup;
 
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import tk.minersonline.mineways.MineWaysMod;
-import tk.minersonline.mineways.item.DirectionalSignItem;
 import tk.minersonline.mineways.item.RoadBuilderItem;
 
 public class ModItems {

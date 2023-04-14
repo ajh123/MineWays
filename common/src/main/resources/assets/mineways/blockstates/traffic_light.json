@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "mineways:block/traffic_light", "uvlock": true },
+    "facing=east":  { "model": "mineways:block/traffic_light", "y":  90, "uvlock": true },
+    "facing=south": { "model": "mineways:block/traffic_light", "y": 180, "uvlock": true },
+    "facing=west":  { "model": "mineways:block/traffic_light", "y": 270, "uvlock": true }
+  }
+}
