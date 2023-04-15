@@ -12,6 +12,6 @@ public class ModBlockEntities {
     // );
 
     public static void init() {
-        // Initalise the static class variables.
+        // Initialise the static class variables.
     }
 }

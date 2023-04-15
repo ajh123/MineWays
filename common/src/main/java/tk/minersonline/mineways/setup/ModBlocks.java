@@ -27,6 +27,6 @@ public class ModBlocks {
     }
 
     public static void init() {
-        // Initalise the static class variables.
+        // Initialise the static class variables.
     }
 }

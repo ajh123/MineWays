@@ -1,9 +1,7 @@
 package tk.minersonline.mineways;
 
-import dev.architectury.platform.Platform;
 import dev.architectury.registry.CreativeTabRegistry;
 
-import net.fabricmc.api.EnvType;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
