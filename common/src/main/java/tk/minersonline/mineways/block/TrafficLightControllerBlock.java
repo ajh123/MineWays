@@ -6,10 +6,12 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import org.jetbrains.annotations.Nullable;
 
 public class TrafficLightControllerBlock extends HorizontalFacingBlock implements BlockEntityProvider {
@@ -34,5 +36,13 @@ public class TrafficLightControllerBlock extends HorizontalFacingBlock implement
 	@Override
 	public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
 		return new TrafficLightControllerBlockEntity(pos, state);
+	}
+
+	@Override
+	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+		BlockEntity blockentity = world.getBlockEntity(pos);
+		if (blockentity instanceof TrafficLightControllerBlockEntity) {
+			((TrafficLightControllerBlockEntity)blockentity).onScheduledTick();
+		}
 	}
 }
