@@ -8,11 +8,11 @@ import tk.minersonline.mineways.api.device.DeviceProvider;
 import tk.minersonline.mineways.api.network.Packet;
 import tk.minersonline.mineways.setup.ModBlockEntities;
 
-public class TrafficLightBlockEntity extends BlockEntity implements DeviceProvider {
+public class TrafficLightControllerBlockEntity extends BlockEntity implements DeviceProvider {
 	private final AbstractDevice device;
 
-	public TrafficLightBlockEntity(BlockPos pos, BlockState state) {
-		super(ModBlockEntities.TRAFFIC_LIGHT.get(), pos, state);
+	public TrafficLightControllerBlockEntity(BlockPos pos, BlockState state) {
+		super(ModBlockEntities.TRAFFIC_LIGHT_CONTROLLER.get(), pos, state);
 		this.device = new AbstractDevice(this);
 	}
 

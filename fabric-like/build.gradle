@@ -15,5 +15,4 @@ dependencies {
     modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
 
     compileClasspath(project(path: ":common", configuration: "namedElements")) { transitive false }
-    modApi "curse.maven:markdownmanual-502485:${rootProject.markdown_manual_fabric_ish_version}"
 }

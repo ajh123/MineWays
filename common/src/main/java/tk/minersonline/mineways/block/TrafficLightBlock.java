@@ -1,9 +1,7 @@
 package tk.minersonline.mineways.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
@@ -13,9 +11,10 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import org.jetbrains.annotations.Nullable;
 import tk.minersonline.mineways.utils.TrafficLightUtils.LightState;
 
-public class TrafficLightBlock extends HorizontalFacingBlock {
+public class TrafficLightBlock extends HorizontalFacingBlock implements BlockEntityProvider {
 
     public static final EnumProperty<LightState> LIGHT_STATE = EnumProperty.of("state", LightState.class);
 
@@ -49,5 +48,11 @@ public class TrafficLightBlock extends HorizontalFacingBlock {
     @Override
 	public BlockState getPlacementState(ItemPlacementContext ctx) {
 		return super.getPlacementState(ctx).with(Properties.HORIZONTAL_FACING, ctx.getPlayerFacing().getOpposite());
+	}
+
+	@Nullable
+	@Override
+	public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+		return new TrafficLightBlockEntity(pos, state);
 	}
 }
