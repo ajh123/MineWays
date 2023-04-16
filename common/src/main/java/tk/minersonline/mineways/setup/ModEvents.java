@@ -12,7 +12,7 @@ public class ModEvents {
 			Block block = state.getBlock();
 			if (block instanceof EventHandler handler) {
 				boolean cancel = handler.handleEvent(new Events.Event<>(
-						new Events.BlockBreakEvent(world, pos, state, player)
+					new Events.BlockBreakEvent(world, pos, state, player)
 				));
 				if (cancel) {
 					return EventResult.interrupt(true);

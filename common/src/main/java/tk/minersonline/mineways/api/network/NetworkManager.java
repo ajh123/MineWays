@@ -1,7 +1,5 @@
 package tk.minersonline.mineways.api.network;
 
-import tk.minersonline.mineways.api.device.AbstractDevice;
-
 import java.util.*;
 
 public class NetworkManager {
@@ -24,14 +22,12 @@ public class NetworkManager {
 	public void registerDevice(AbstractDevice device) {
 		if (!devices.containsKey(device.getId())) {
 			devices.put(device.getId(), device);
-			System.out.println("Registered device with id " + device.getId().toString());
 		}
 	}
 
 	public void removeDevice(AbstractDevice device) {
 		devices.remove(device.getId());
 		connections.removeIf(connection -> connection.contains(device));
-		System.out.println("Removed device with id " + device.getId().toString());
 	}
 
 	public void connectDevices(AbstractDevice device1, AbstractDevice device2) {
@@ -42,11 +38,29 @@ public class NetworkManager {
 		connections.removeIf(connection -> connection.contains(device1) && connection.contains(device2));
 	}
 
+	public boolean devicesLinked(AbstractDevice device1, AbstractDevice device2) {
+		for (Connection connection : connections) {
+			if (connection.contains(device1, device2)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public Collection<AbstractDevice> getNeighbours(AbstractDevice device) {
+		List<AbstractDevice> neighbours = new ArrayList<>();
+		for (Connection connection : connections) {
+			if (connection.contains(device)) {
+				neighbours.add(connection.getOther(device));
+			}
+		}
+		return Collections.unmodifiableList(neighbours);
+	}
+
 	public void forwardPacket(Packet packet, AbstractDevice sender, AbstractDevice recipient) {
 		if (devices.containsValue(sender) && devices.containsValue(recipient)) {
 			for (Connection connection : connections) {
 				if (connection.contains(sender) && connection.contains(recipient)) {
-					System.out.println("Device " + sender.getId() + " sending packet to " + recipient.getId() + "...");
 					recipient.receivePacket(packet);
 					break;
 				}
@@ -69,6 +83,16 @@ public class NetworkManager {
 
 		public boolean contains(AbstractDevice device1, AbstractDevice device2) {
 			return contains(device1) && contains(device2);
+		}
+
+		public AbstractDevice getOther(AbstractDevice device) {
+			if (device == device1) {
+				return device2;
+			} else if (device == device2) {
+				return  device1;
+			} else {
+				return null;
+			}
 		}
 	}
 }

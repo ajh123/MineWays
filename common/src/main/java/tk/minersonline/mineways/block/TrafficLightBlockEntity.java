@@ -5,9 +5,8 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import tk.minersonline.mineways.api.device.AbstractDevice;
-import tk.minersonline.mineways.api.device.DeviceProvider;
-import tk.minersonline.mineways.api.network.NetworkManager;
+import tk.minersonline.mineways.api.network.AbstractDevice;
+import tk.minersonline.mineways.api.network.DeviceProvider;
 import tk.minersonline.mineways.api.network.Packet;
 import tk.minersonline.mineways.setup.ModBlockEntities;
 
@@ -28,7 +27,7 @@ public class TrafficLightBlockEntity extends BlockEntity implements DeviceProvid
 
 	@Override
 	public void processPacket(Packet packet) {
-
+		System.out.println("Traffic Light: "+packet.getIdentifier());
 	}
 
 	public AbstractDevice getDevice() {

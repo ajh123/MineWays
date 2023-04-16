@@ -1,8 +1,6 @@
-package tk.minersonline.mineways.api.device;
+package tk.minersonline.mineways.api.network;
 
 import net.minecraft.nbt.NbtCompound;
-import tk.minersonline.mineways.api.network.NetworkManager;
-import tk.minersonline.mineways.api.network.Packet;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -36,14 +34,12 @@ public class AbstractDevice {
 		return compound;
 	}
 
-	public void receivePacket(Packet packet) {
+	protected void receivePacket(Packet packet) {
 		buffer.add(packet);
-		System.out.println("Packet received by " + id);
 	}
 
 	public void processPackets() {
 		for (Packet packet : buffer) {
-			System.out.println("Processing packet " + packet.getData() + " at " + id);
 			this.provider.processPacket(packet);
 		}
 		buffer.clear();

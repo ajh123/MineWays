@@ -34,7 +34,7 @@ public class RoadBuilderItem extends Item {
             ItemStack stack = player.getStackInHand(Hand.OFF_HAND);
             if (!(stack.getItem() instanceof BlockItem)) {
                 player.sendMessageToClient(
-                    Text.translatable("mineways.gui.text.road_builder.blockIncompatible", Text.translatable(stack.getTranslationKey())), 
+                    Text.translatable("gui.text.mineways.road_builder.blockIncompatible", Text.translatable(stack.getTranslationKey())),
                     true
                 );
                 return ActionResult.FAIL;

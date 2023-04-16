@@ -3,13 +3,17 @@ package tk.minersonline.mineways.block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import tk.minersonline.mineways.api.device.AbstractDevice;
-import tk.minersonline.mineways.api.device.DeviceProvider;
+import tk.minersonline.mineways.MineWaysMod;
+import tk.minersonline.mineways.api.network.AbstractDevice;
+import tk.minersonline.mineways.api.network.DeviceProvider;
 import tk.minersonline.mineways.api.network.NetworkManager;
 import tk.minersonline.mineways.api.network.Packet;
 import tk.minersonline.mineways.setup.ModBlockEntities;
+
+import java.util.Collection;
 
 public class TrafficLightControllerBlockEntity extends BlockEntity implements DeviceProvider {
 	private AbstractDevice device;
@@ -52,6 +56,14 @@ public class TrafficLightControllerBlockEntity extends BlockEntity implements De
 	public static <T extends BlockEntity> void tick(World world, BlockPos blockPos, BlockState blockState, T t) {
 		if (!world.isClient && t instanceof TrafficLightControllerBlockEntity blockEntity) {
 			blockEntity.device.processPackets();
+			Collection<AbstractDevice> neighbours = NetworkManager.getInstance().getNeighbours(blockEntity.device);
+			for (AbstractDevice neighbour : neighbours) {
+				Packet packet = new Packet(
+						new Identifier(MineWaysMod.MOD_ID, "traffic_light_update"),
+						new NbtCompound()
+				);
+				NetworkManager.getInstance().forwardPacket(packet, blockEntity.device, neighbour);
+			}
 		}
 	}
 }
