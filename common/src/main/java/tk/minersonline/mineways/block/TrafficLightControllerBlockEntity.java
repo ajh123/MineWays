@@ -12,6 +12,7 @@ import tk.minersonline.mineways.api.network.DeviceProvider;
 import tk.minersonline.mineways.api.network.NetworkManager;
 import tk.minersonline.mineways.api.network.Packet;
 import tk.minersonline.mineways.setup.ModBlockEntities;
+import tk.minersonline.mineways.utils.TrafficLightUtils;
 
 import java.util.Collection;
 
@@ -58,10 +59,7 @@ public class TrafficLightControllerBlockEntity extends BlockEntity implements De
 			blockEntity.device.processPackets();
 			Collection<AbstractDevice> neighbours = NetworkManager.getInstance().getNeighbours(blockEntity.device);
 			for (AbstractDevice neighbour : neighbours) {
-				Packet packet = new Packet(
-						new Identifier(MineWaysMod.MOD_ID, "traffic_light_update"),
-						new NbtCompound()
-				);
+				Packet packet = new TrafficLightUtils.TrafficLightUpdatePacket(TrafficLightUtils.LightState.getRandom());
 				NetworkManager.getInstance().forwardPacket(packet, blockEntity.device, neighbour);
 			}
 		}

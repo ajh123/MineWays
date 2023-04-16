@@ -1,6 +1,15 @@
 package tk.minersonline.mineways.utils;
 
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.StringIdentifiable;
+import tk.minersonline.mineways.MineWaysMod;
+import tk.minersonline.mineways.api.network.Packet;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class TrafficLightUtils {
 
@@ -26,6 +35,10 @@ public class TrafficLightUtils {
 		;
 		private final String name;
 
+		private static final List<LightState> VALUES = List.of(values());
+		private static final int SIZE = VALUES.size();
+		private static final Random RANDOM = new Random();
+
 		LightState(String name) {
 			this.name = name;
 		}
@@ -33,6 +46,23 @@ public class TrafficLightUtils {
 		@Override
 		public String asString() {
 			return name;
+		}
+
+		public static LightState getRandom()  {
+			return VALUES.get(RANDOM.nextInt(SIZE));
+		}
+
+		public static LightState get(int index)  {
+			return VALUES.get(index);
+		}
+	}
+
+	public static class TrafficLightUpdatePacket extends Packet {
+		public TrafficLightUpdatePacket(LightState newState) {
+			super(new Identifier(MineWaysMod.MOD_ID, "traffic_light_update"));
+			NbtCompound data = new NbtCompound();
+			data.putInt("state", newState.ordinal());
+			this.setData(data);
 		}
 	}
 }

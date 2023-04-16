@@ -9,6 +9,7 @@ import tk.minersonline.mineways.api.network.AbstractDevice;
 import tk.minersonline.mineways.api.network.DeviceProvider;
 import tk.minersonline.mineways.api.network.Packet;
 import tk.minersonline.mineways.setup.ModBlockEntities;
+import tk.minersonline.mineways.utils.TrafficLightUtils;
 
 public class TrafficLightBlockEntity extends BlockEntity implements DeviceProvider {
 	private AbstractDevice device;
@@ -27,7 +28,13 @@ public class TrafficLightBlockEntity extends BlockEntity implements DeviceProvid
 
 	@Override
 	public void processPacket(Packet packet) {
-		System.out.println("Traffic Light: "+packet.getIdentifier());
+		TrafficLightUtils.LightState state = TrafficLightUtils.LightState.get(packet.getData().getInt("state"));
+		if (this.world != null) {
+			BlockState blockState = this.world.getBlockState(this.pos);
+			if (blockState.getBlock() instanceof TrafficLightBlock) {
+				world.setBlockState(pos, blockState.with(TrafficLightBlock.LIGHT_STATE, state));
+			}
+		}
 	}
 
 	public AbstractDevice getDevice() {

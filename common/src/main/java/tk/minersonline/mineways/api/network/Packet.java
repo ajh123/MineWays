@@ -5,15 +5,18 @@ import net.minecraft.util.Identifier;
 
 public class Packet {
 	private final Identifier identifier;
-	private final NbtCompound data;
+	private NbtCompound data = new NbtCompound();
 
-	public Packet(Identifier identifier, NbtCompound  data) {
+	public Packet(Identifier identifier) {
 		this.identifier = identifier;
-		this.data = data;
 	}
 
-	public NbtCompound  getData() {
+	public NbtCompound getData() {
 		return data;
+	}
+
+	public void setData(NbtCompound data) {
+		this.data = data;
 	}
 
 	public Identifier getIdentifier() {
