@@ -26,14 +26,6 @@ public class TrafficLightBlockEntity extends BlockEntity implements DeviceProvid
 		}
 	}
 
-	public void onScheduledTick() {
-		if (!this.removed) {
-			this.device.processPackets();
-		} else {
-			NetworkManager.getInstance().removeDevice(this.getDevice());
-		}
-	}
-
 	@Override
 	public void processPacket(Packet packet) {
 
@@ -55,5 +47,11 @@ public class TrafficLightBlockEntity extends BlockEntity implements DeviceProvid
 	public void readNbt(NbtCompound nbt) {
 		super.readNbt(nbt);
 		this.device = AbstractDevice.fromNbt(this, nbt.getCompound("device"));
+	}
+
+	public static <T extends BlockEntity> void tick(World world, BlockPos blockPos, BlockState blockState, T t) {
+		if (!world.isClient && t instanceof TrafficLightBlockEntity blockEntity) {
+			blockEntity.device.processPackets();
+		}
 	}
 }

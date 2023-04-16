@@ -20,5 +20,6 @@ public class Registration {
         ModItems.init();
         ModBlocks.init();
         ModBlockEntities.init();
+		ModEvents.init();
 	}
 }

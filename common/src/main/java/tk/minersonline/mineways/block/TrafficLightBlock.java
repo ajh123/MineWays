@@ -2,21 +2,26 @@ package tk.minersonline.mineways.block;
 
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import tk.minersonline.mineways.api.event.EventHandler;
+import tk.minersonline.mineways.api.event.Events;
+import tk.minersonline.mineways.api.network.NetworkManager;
+import tk.minersonline.mineways.setup.ModBlockEntities;
 import tk.minersonline.mineways.utils.TrafficLightUtils.LightState;
 
-public class TrafficLightBlock extends HorizontalFacingBlock implements BlockEntityProvider {
+public class TrafficLightBlock extends HorizontalFacingBlock implements BlockEntityProvider, EventHandler {
 
     public static final EnumProperty<LightState> LIGHT_STATE = EnumProperty.of("state", LightState.class);
 
@@ -58,11 +63,23 @@ public class TrafficLightBlock extends HorizontalFacingBlock implements BlockEnt
 		return new TrafficLightBlockEntity(pos, state);
 	}
 
+	@Nullable
 	@Override
-	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-		BlockEntity blockentity = world.getBlockEntity(pos);
-		if (blockentity instanceof TrafficLightBlockEntity) {
-			((TrafficLightBlockEntity)blockentity).onScheduledTick();
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+		if (type != ModBlockEntities.TRAFFIC_LIGHT.get()) return null;
+		return TrafficLightBlockEntity::tick;
+	}
+
+	@Override
+	public boolean handleEvent(Events.Event<?> event) {
+		if (event.getData() instanceof Events.BlockBreakEvent breakEvent) {
+			World world = breakEvent.getWorld();
+			BlockPos pos = breakEvent.getPos();
+			BlockEntity entity = world.getBlockEntity(pos);
+			if (entity instanceof TrafficLightBlockEntity blockEntity) {
+				NetworkManager.getInstance().removeDevice(blockEntity.getDevice());
+			}
 		}
+		return false;
 	}
 }
