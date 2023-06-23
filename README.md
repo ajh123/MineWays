@@ -1,16 +1,27 @@
 # Mine Ways
 
-"Minecraft Mine Ways" is a mod that adds a variety of transportation options to the game, 
-including roads, vehicles, and more. The mod is designed to make it easier for 
-players to navigate their way around the game world and to connect different locations 
-together. With Mine Ways, players can create a network of roads and paths, allowing them 
-to quickly and easily travel between different areas of the game. Whether you're looking to 
-explore new areas, transport goods and resources, or simply move around more efficiently, 
-Mine Ways has something to offer.
+Experience the ultimate airport management adventure with "Mine Ways," the groundbreaking Minecraft mod. 
+Step into the shoes of an airport manager and take control of every aspect of your virtual airport. 
+This feature-packed mod introduces an array of game-changing elements, including cutting-edge RADAR systems,
+robust security protocols, immersive passport control, and much more. 
+Immerse yourself in the intricate world of airport operations, optimize efficiency, 
+and create an engaging and realistic airport environment. 
+With "Mine Ways," the sky's the limit as you embark on an unforgettable journey of airport management mastery.
 
-Curse Forge: https://www.curseforge.com/minecraft/mc-mods/mineways
+## Downloads
 
-Wiki: https://github.com/ajh123/MineWays/wiki
+* Curse Forge: https://www.curseforge.com/minecraft/mc-mods/mineways
+* GitHub Releases: https://github.com/ajh123/MineWays/tags
 
- 
+## Links
+
+* GitHub: https://github.com/ajh123/MineWays
+* Wiki: https://minersonline.tk/docs/en/mineways
+
+## Important Notes
+
 This mod is currently in very early development, so expect bugs!
+
+## Contributing
+
+We would be very happy if you want to contribute to our project. Just make sure you use the latest "non-master" branch, then [publish your PR](https://github.com/ajh123/MineWays/pulls). You may create the PR as a "draft" so we can see your progress before it gets merged.

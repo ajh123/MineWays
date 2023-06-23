@@ -9,8 +9,8 @@ on:
 env:                                              
   MINECRAFT_VERSION: 1.19.2                        
   JAVA_VERSION: 17      
-  VERSION: 1.0.2+1.19.2
-  RELEASE_NAME: Mine Ways 1.0.2 for Minecraft 1.19.2
+  VERSION: 1.0.3+1.19.2
+  RELEASE_NAME: 1.0.3+1.19.2
   RELEASE_TYPE: alpha
   CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.UPLOAD_GITHUB_TOKEN }}           
@@ -60,12 +60,12 @@ jobs:
           name: "${{env.RELEASE_NAME}}"
           version: "${{env.VERSION}}"
           version-type: "${{env.RELEASE_TYPE}}"
-          changelog-file: CHANGELOG.md                                      
+          changelog-file: "changelogs/${{env.VERSION}}-CHANGELOG.md"                                      
 
-          loaders: |
-            fabric
-            forge
-            quilt
+          loaders:
+            - fabric
+            - forge
+            - quilt
           
           game-versions: "${{env.MINECRAFT_VERSION}}"
           java: "${{env.JAVA_VERSION}}"

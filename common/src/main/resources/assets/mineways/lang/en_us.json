@@ -1,5 +1,9 @@
 {
   "itemGroup.mineways.mineays_main": "Mineways",
-  "item.mineways.road_creator": "Road Creator",
-  "item.mineways.road_node": "Road Node"
+  "item.mineways.road_builder": "Road Builder",
+  "gui.text.mineways.road_builder.blockIncompatible": "The item \"%s\" is an invalid block.",
+  "item.mineways.device_linker": "Device Linker",
+  "gui.text.mineways.device_linker.selected_block": "Selected Block: %s",
+  "block.mineways.traffic_light": "Traffic Light",
+  "block.mineways.traffic_light_controller": "Traffic Light Controller"
 }
